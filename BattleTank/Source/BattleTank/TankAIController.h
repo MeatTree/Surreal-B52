@@ -2,6 +2,7 @@
 
 #pragma once
 
+#include "TankAimingComponent.h"
 #include "CoreMinimal.h"
 #include "BattleTank.h"
 #include "Public/UObject/Class.h"
@@ -22,9 +23,12 @@ class BATTLETANK_API ATankAIController : public AAIController
 	
 public:
 	virtual void BeginPlay() override;
+
+	virtual void Tick(float DeltaTime) override;
+
 	ATank* GetPlayerTank() const;
 
-private:
 	ATank* GetControlledTank() const;
+
 
 };
