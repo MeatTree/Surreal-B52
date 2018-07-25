@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "TankPlayerController.h"
-
+#include "Tank.h"
 
 void ATankPlayerController::BeginPlay()
 {
@@ -23,7 +23,6 @@ void ATankPlayerController::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 	AimTowardsCrosshair();
-	// AimTowardsCrosshair();
 }
 
 ATank* ATankPlayerController::GetControlledTank() const
@@ -54,11 +53,8 @@ bool ATankPlayerController::GetSightRayHitLocation(FVector& HitLocation) const
 	FVector LookDirection;
 	if (GetLookDirection(ScreenLocation, LookDirection))
 	{
-		// Linetrace along that look direction, and see what we hit (up to a max range)
 		GetLookVectorHitLocation(LookDirection, HitLocation);
 	}
-	
-	
 	return true;
 }
 

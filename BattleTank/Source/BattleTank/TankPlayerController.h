@@ -11,13 +11,12 @@
 #include "GameFramework/Pawn.h"
 #include "GameFramework/Controller.h"
 #include "Engine/World.h"
-#include "Tank.h"
 #include "TankPlayerController.generated.h"
 
 
-/**
- * 
- */
+// Forward Declaration
+class ATank;
+
 UCLASS()
 class BATTLETANK_API ATankPlayerController : public APlayerController
 {
@@ -36,7 +35,7 @@ private:
 		float CrossHairYLocation = 0.3333;
 
 	UPROPERTY(EditAnywhere)
-		float LineTraceRange = 1000000;
+		float LineTraceRange = 10000;
 
 	ATank* GetControlledTank() const;
 

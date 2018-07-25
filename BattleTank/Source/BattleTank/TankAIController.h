@@ -9,13 +9,12 @@
 #include "GameFramework/PlayerController.h"
 #include "GameFramework/Actor.h"
 #include "GameFramework/Pawn.h"
-#include "Tank.h"
 #include "AIController.h"
 #include "TankAIController.generated.h"
 
-/**
- * 
- */
+// Class Declarations
+class ATank;
+
 UCLASS()
 class BATTLETANK_API ATankAIController : public AAIController
 {
