@@ -35,7 +35,7 @@ private:
 		float CrossHairYLocation = 0.3333;
 
 	UPROPERTY(EditAnywhere)
-		float LineTraceRange = 10000;
+		float LineTraceRange = 100000;
 
 	ATank* GetControlledTank() const;
 
