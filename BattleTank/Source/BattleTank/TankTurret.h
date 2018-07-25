@@ -20,6 +20,6 @@ public:
 
 private:
 	UPROPERTY(EditAnywhere, Category = Setup, meta = (ClampMin = "10.0", ClampMax = "50.0"))
-		float MaxRotationDegreesPerSecond = 20;
+	float MaxRotationDegreesPerSecond = 20;
 	
 };
