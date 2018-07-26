@@ -28,14 +28,14 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 private:
-	UPROPERTY(EditAnywhere)
-		float CrossHairXLocation = 0.5;
+	UPROPERTY(EditDefaultsOnly)
+	float CrossHairXLocation = 0.5;
 
-	UPROPERTY(EditAnywhere)
-		float CrossHairYLocation = 0.3333;
+	UPROPERTY(EditDefaultsOnly)
+	float CrossHairYLocation = 0.3333;
 
-	UPROPERTY(EditAnywhere)
-		float LineTraceRange = 100000;
+	UPROPERTY(EditDefaultsOnly)
+	float LineTraceRange = 100000;
 
 	ATank* GetControlledTank() const;
 

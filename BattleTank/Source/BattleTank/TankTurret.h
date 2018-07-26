@@ -19,7 +19,7 @@ public:
 	void Rotate(float RelativeSpeed);
 
 private:
-	UPROPERTY(EditAnywhere, Category = Setup, meta = (ClampMin = "10.0", ClampMax = "50.0"))
+	UPROPERTY(EditDefaultsOnly, Category = Setup, meta = (ClampMin = "10.0", ClampMax = "50.0"))
 	float MaxRotationDegreesPerSecond = 20;
 	
 };
