@@ -16,6 +16,7 @@
 
 // Forward Declaration
 class ATank;
+class UTankAimingComponenet;
 
 UCLASS()
 class BATTLETANK_API ATankPlayerController : public APlayerController
@@ -27,6 +28,13 @@ public:
 
 	virtual void Tick(float DeltaTime) override;
 
+protected:
+	UFUNCTION(BlueprintCallable, Category = "Setup")
+	ATank* GetControlledTank() const;
+
+	UFUNCTION(BlueprintImplementableEvent, Category = "Setup")
+	void FoundAimingComponent(UTankAimingComponent* AimCompRef);
+
 private:
 	UPROPERTY(EditDefaultsOnly)
 	float CrossHairXLocation = 0.5;
@@ -37,7 +45,7 @@ private:
 	UPROPERTY(EditDefaultsOnly)
 	float LineTraceRange = 100000;
 
-	ATank* GetControlledTank() const;
+
 
 	// Start the tank aiming towards the crosshair so the shot will hit where the crosshair intersects the world
 	void AimTowardsCrosshair() const;	
