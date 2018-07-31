@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "TankAimingComponent.h"
+
 #include "CoreMinimal.h"
 #include "BattleTank.h"
 #include "Public/UObject/Class.h"
