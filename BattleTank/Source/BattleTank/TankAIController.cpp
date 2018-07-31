@@ -20,11 +20,12 @@ void ATankAIController::Tick(float DeltaTime)
 
 	if (PlayerTank)
 	{
-		// TODO Move towards the player
+		// Move towards the player
+		MoveToActor(PlayerTank, AcceptanceRadius); // TODO check acceptance radius unit measurements
 
 		// Aim towards the player
 		ControlledTank->AimAt(PlayerTank->GetActorLocation());
 
-		ControlledTank->Fire();	// TODO limit firing rate
+		//ControlledTank->Fire();
 	}
 }
