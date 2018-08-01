@@ -40,6 +40,8 @@ public:
 
 	void AimAt(FVector HitLocation);
 
+	EFiringState GetFiringState() const;
+
 private:
 	// Sets default values for this component's properties
 	UTankAimingComponent();
