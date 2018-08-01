@@ -8,44 +8,15 @@
 
 
 // Forward Declarations
-class UTankBarrel;
-class UTankTurret;
-class UTankMovementComponent;
-class AProjectile;
+
 
 UCLASS()
 class BATTLETANK_API ATank : public APawn
 {
 	GENERATED_BODY()
 
-
-protected:
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
-
-	UPROPERTY(BlueprintReadOnly)
-	UTankMovementComponent* TankMovementComponent = nullptr;
-
-
-public:
-	UFUNCTION(BlueprintCallable, Category = "Setup")
-	void Fire();
-
 private:
 	// Sets default values for this pawn's properties
 	ATank();
-
-	UTankBarrel* Barrel = nullptr;
-
-	double LastFireTime = 0;
-
-	UPROPERTY(EditDefaultsOnly, Category = "Setup")
-	TSubclassOf<AProjectile> ProjectileBlueprint;
-
-	UPROPERTY(EditDefaultsOnly, Category = "Firing")
-	float LaunchSpeed = 8000;	// Starting value of 800m/s
-
-	UPROPERTY(EditDefaultsOnly, Category = "Firing")
-	float ReloadTimeInSeconds = 3;
 
 };	
