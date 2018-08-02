@@ -9,6 +9,7 @@
 #include "Classes/Kismet/GameplayStatics.h"
 #include "Classes/Kismet/GameplayStaticsTypes.h"
 
+
 // Sets default values for this component's properties
 UTankAimingComponent::UTankAimingComponent()
 {
@@ -36,6 +37,10 @@ void UTankAimingComponent::TickComponent(float DeltaTime, ELevelTick TickType, F
 	if ((FPlatformTime::Seconds() - LastFireTime) < ReloadTimeInSeconds)
 	{
 		FiringState = EFiringState::Reloading;
+	}
+	else if (CurrentAmmo == 0)
+	{
+		FiringState = EFiringState::OutOfAmmo;
 	}
 	else if (bIsBarrelMoving())
 	{
@@ -102,7 +107,7 @@ void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection)
 
 void UTankAimingComponent::Fire()
 {
-	if (FiringState != EFiringState::Reloading)
+	if (FiringState == (EFiringState::Aiming) || FiringState == (EFiringState::Locked))
 	{
 		auto Projectile = GetWorld()->SpawnActor<AProjectile>(
 			ProjectileBlueprint,
@@ -112,7 +117,13 @@ void UTankAimingComponent::Fire()
 
 		Projectile->LaunchProjectile(LaunchSpeed);
 		LastFireTime = FPlatformTime::Seconds();
+		CurrentAmmo--;
 	}
+}
+
+uint8 UTankAimingComponent::GetCurrentAmmo() const
+{
+	return CurrentAmmo;
 }
 
 bool UTankAimingComponent::bIsBarrelMoving()
