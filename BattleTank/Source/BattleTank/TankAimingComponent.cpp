@@ -118,6 +118,7 @@ void UTankAimingComponent::Fire()
 		Projectile->LaunchProjectile(LaunchSpeed);
 		LastFireTime = FPlatformTime::Seconds();
 		CurrentAmmo--;
+		Barrel->AddForce(-AimDirection * 990000000.0f);
 	}
 }
 
