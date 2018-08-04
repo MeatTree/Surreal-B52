@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/ProjectileMovementComponent.h"
+#include "PhysicsEngine/RadialForceComponent.h"
 #include "Particles/ParticleSystemComponent.h"
 #include "Components/StaticMeshComponent.h"
 #include "GameFramework/Actor.h"
@@ -16,6 +17,7 @@ class BATTLETANK_API AProjectile : public AActor
 {
 	GENERATED_BODY()
 	
+
 public:	
 	// Sets default values for this actor's properties
 	AProjectile();
@@ -25,6 +27,9 @@ protected:
 
 public:	
 	void LaunchProjectile(float Speed);
+
+	UPROPERTY(EditDefaultsOnly, Category = "Firing")
+	float ProjectileDamage = 20.0f;
 
 private:
 	// Called when the game starts or when spawned
@@ -38,9 +43,21 @@ private:
 	
 	UPROPERTY(VisibleAnywhere, Category = "Components")
 	UParticleSystemComponent* ImpactBlast = nullptr;
+
+	UPROPERTY(VisibleAnywhere, Category = "Components")
+	URadialForceComponent * ExplosionForce = nullptr;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Firing")
+	float DestroyDelay = 2.0f;
+
+
 	
 	UFUNCTION()
 	void OnHit(UPrimitiveComponent * HitComponent, AActor * OtherActor, UPrimitiveComponent * OtherComponent, FVector NormalImpulse, const FHitResult & Hit);
+
+	void OnTimerExpire();
+
+	FTimerHandle TimerHandle;
 
 };
 
