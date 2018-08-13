@@ -24,6 +24,11 @@ private:
 
 	virtual void Tick(float DeltaTime) override;
 
+	virtual void SetPawn(APawn* InPawn) override;
+
+	UFUNCTION()
+	void OnTankDeath();
+
 protected:
 	// How close the AI tank can get to the player
 	UPROPERTY(EditDefaultsOnly, Category = "Setup")
